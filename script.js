@@ -1,8 +1,9 @@
 const form = document.getElementById("patientForm");
-const tableBody = document.getElementById("tableBody");
+const patientList = document.getElementById("patientList");
 const photoInput = document.getElementById("photo");
 const preview = document.getElementById("preview");
 const countText = document.getElementById("count");
+const notifySound = document.getElementById("notifySound");
 
 const nameInput = document.getElementById("name");
 const ageInput = document.getElementById("age");
@@ -12,7 +13,7 @@ let patients = JSON.parse(localStorage.getItem("patients")) || [];
 let imageData = "";
 let editingIndex = null;
 
-/* Capitalize name */
+/* Capitalize Name */
 nameInput.addEventListener("input", () => {
     nameInput.value = nameInput.value.replace(/\b\w/g, c => c.toUpperCase());
 });
@@ -31,30 +32,35 @@ photoInput.addEventListener("change", () => {
     reader.readAsDataURL(file);
 });
 
-/* Render Table */
-function renderTable() {
-    tableBody.innerHTML = "";
+/* Render Patients Dynamically */
+function renderPatients() {
+    patientList.innerHTML = "";
+    patients.forEach((p, i) => {
+        const article = document.createElement("article");
 
-    patients.forEach((patient, index) => {
-        const row = tableBody.insertRow();
-        row.innerHTML = `
-            <td><img src="${patient.image}"></td>
-            <td>${patient.name}</td>
-            <td>${patient.age}</td>
-            <td>${patient.department}</td>
-            <td>
-                <button class="action-btn edit" data-index="${index}">Edit</button>
-                <button class="action-btn delete" data-index="${index}">Delete</button>
-            </td>
+        article.innerHTML = `
+            <figure>
+                <img src="${p.image}" alt="Patient Photo">
+                <figcaption>${p.name}</figcaption>
+            </figure>
+            <div class="info">
+                <p>Age: ${p.age}</p>
+                <p>Department: ${p.department}</p>
+            </div>
+            <div class="actions">
+                <button class="edit" data-index="${i}">Edit</button>
+                <button class="delete" data-index="${i}">Delete</button>
+            </div>
         `;
+        patientList.appendChild(article);
     });
 
     countText.innerText = `Total Patients: ${patients.length}`;
     localStorage.setItem("patients", JSON.stringify(patients));
 }
 
-/* Save Patient */
-form.addEventListener("submit", (e) => {
+/* Add/Edit Patient */
+form.addEventListener("submit", e => {
     e.preventDefault();
 
     if (ageInput.value <= 0 || ageInput.value > 120) {
@@ -66,7 +72,7 @@ form.addEventListener("submit", (e) => {
         name: nameInput.value,
         age: ageInput.value,
         department: departmentInput.value,
-        image: imageData || "https://via.placeholder.com/150"
+        image: imageData || `https://picsum.photos/seed/${Date.now()}/150`
     };
 
     if (editingIndex !== null) {
@@ -76,38 +82,35 @@ form.addEventListener("submit", (e) => {
         patients.push(patient);
     }
 
+    notifySound.play();
     form.reset();
     preview.style.display = "none";
     imageData = "";
 
-    renderTable();
+    renderPatients();
 });
 
-/* Edit & Delete */
-tableBody.addEventListener("click", (e) => {
+/* Edit/Delete Buttons */
+patientList.addEventListener("click", e => {
     const index = e.target.dataset.index;
-
     if (e.target.classList.contains("delete")) {
-        if (confirm("Are you sure you want to delete this patient record?")) {
+        if (confirm("Delete this patient?")) {
             patients.splice(index, 1);
-            renderTable();
+            renderPatients();
         }
     }
-
     if (e.target.classList.contains("edit")) {
-        const patient = patients[index];
-
-        nameInput.value = patient.name;
-        ageInput.value = patient.age;
-        departmentInput.value = patient.department;
-
-        imageData = patient.image;
+        const p = patients[index];
+        nameInput.value = p.name;
+        ageInput.value = p.age;
+        departmentInput.value = p.department;
+        imageData = p.image;
         preview.src = imageData;
         preview.style.display = "block";
-
         editingIndex = index;
     }
 });
 
 /* Initial Load */
-renderTable();
+renderPatients();
+
