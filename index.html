@@ -14,8 +14,8 @@
 
 <main class="dashboard">
 
-    <!-- Patient Registration Form -->
-    <section class="card">
+    <!-- Patient Registration Section -->
+    <section class="card" id="registration">
         <header>
             <h2>Patient Registration</h2>
         </header>
@@ -53,42 +53,47 @@
 
             <button type="submit" class="primary-btn">Save Patient</button>
         </form>
+
+        <!-- Audio Notification -->
+        <audio id="notifySound" preload="auto">
+            <source src="https://www.soundjay.com/button/beep-07.mp3" type="audio/mpeg">
+        </audio>
     </section>
 
-    <!-- Patient Records Table -->
-    <section class="card wide">
+    <!-- Patient Records Section -->
+    <section class="card wide" id="records">
         <header>
             <h2>Patient Records</h2>
             <time id="count" datetime=""></time>
         </header>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Department</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-        </table>
-
         <aside>
             <details>
                 <summary>Tips</summary>
-                <p>You can edit or delete patient records using the action buttons. Make sure patient age is valid (1-120).</p>
+                <p>You can <mark>edit</mark> or <mark>delete</mark> patient records using the action buttons. Age must be between 1-120.</p>
             </details>
         </aside>
+
+        <div id="patientList"></div>
+
+        <!-- Video Tutorial -->
+        <figure>
+            <video id="tutorialVideo" controls width="100%">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <figcaption>Hospital Admin Panel Tutorial</figcaption>
+        </figure>
     </section>
 
 </main>
 
 <footer class="topbar">
-    <p>&copy; <time datetime="2026-01-01">2026</time> CityCare Hospital Admin Panel</p>
+    <p>&copy; <time datetime="2026-02-11">2026</time> CityCare Hospital Admin Panel</p>
 </footer>
 
 <script src="script.js"></script>
 </body>
 </html>
+
+
