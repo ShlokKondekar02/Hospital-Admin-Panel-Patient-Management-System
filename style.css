@@ -5,9 +5,7 @@
     --text: #333;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -16,7 +14,7 @@ body {
     color: var(--text);
 }
 
-/* Top Bar */
+/* Topbar */
 .topbar {
     background: var(--primary);
     color: white;
@@ -51,111 +49,28 @@ body {
     margin-bottom: 15px;
 }
 
-fieldset {
-    border: none;
-    padding: 0;
-}
+fieldset { border: none; padding: 0; }
+label { font-weight: 600; display: block; margin-bottom: 5px; }
+input, select { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; }
+input:focus, select:focus { outline: none; border-color: var(--primary); }
 
-label {
-    font-weight: 600;
-    margin-bottom: 5px;
-    display: block;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-input:focus, select:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
-figure {
-    margin: 10px 0;
-    text-align: center;
-}
-
-figure img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 8px;
-    display: none;
-}
-
-figcaption {
-    font-size: 12px;
-    color: #555;
-}
+figure { margin: 10px 0; text-align: center; }
+figure img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; display: none; }
+figcaption { font-size: 12px; color: #555; }
 
 /* Buttons */
-.primary-btn {
-    width: 100%;
-    padding: 12px;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
+.primary-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; }
+.primary-btn:hover { opacity: 0.9; }
 
-.primary-btn:hover {
-    opacity: 0.9;
-}
+/* Patient List Articles */
+article { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #e0e0e0; }
+article figure { margin: 0 15px 0 0; width: 60px; flex-shrink: 0; }
+article img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+article .info { flex: 1; }
+article .actions button { margin-right: 5px; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; }
+.edit { background: #ff9800; color: white; }
+.delete { background: #f44336; color: white; }
 
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+aside details { margin-top: 15px; background: #f0f3f7; padding: 10px; border-radius: 8px; }
+mark { background: yellow; color: black; }
 
-th {
-    background: #f0f3f7;
-    text-align: left;
-}
-
-th, td {
-    padding: 12px;
-}
-
-tr {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-td img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-}
-
-/* Action Buttons */
-.action-btn {
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    margin-right: 5px;
-}
-
-.edit {
-    background: #ff9800;
-    color: white;
-}
-
-.delete {
-    background: #f44336;
-    color: white;
-}
-
-/* Aside details */
-aside details {
-    margin-top: 15px;
-    background: #f0f3f7;
-    padding: 10px;
-    border-radius: 8px;
-}
