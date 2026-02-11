@@ -1,0 +1,161 @@
+:root {
+    --primary: #1e88e5;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --text: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Top Bar */
+.topbar {
+    background: var(--primary);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 25px;
+    padding: 30px;
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.wide {
+    overflow-x: auto;
+}
+
+/* Form */
+.input-group {
+    margin-bottom: 15px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+figure {
+    margin: 10px 0;
+    text-align: center;
+}
+
+figure img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: none;
+}
+
+figcaption {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Buttons */
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    opacity: 0.9;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f0f3f7;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+}
+
+tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+td img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+/* Action Buttons */
+.action-btn {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.edit {
+    background: #ff9800;
+    color: white;
+}
+
+.delete {
+    background: #f44336;
+    color: white;
+}
+
+/* Aside details */
+aside details {
+    margin-top: 15px;
+    background: #f0f3f7;
+    padding: 10px;
+    border-radius: 8px;
+}

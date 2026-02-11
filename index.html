@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>CityCare Hospital</h1>
+    <span>Admin Panel</span>
+</header>
+
+<main class="dashboard">
+
+    <!-- Patient Registration Form -->
+    <section class="card">
+        <header>
+            <h2>Patient Registration</h2>
+        </header>
+
+        <form id="patientForm">
+            <fieldset class="input-group">
+                <label for="name">Patient Name</label>
+                <input type="text" id="name" required>
+            </fieldset>
+
+            <fieldset class="input-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" required>
+            </fieldset>
+
+            <fieldset class="input-group">
+                <label for="department">Department</label>
+                <select id="department">
+                    <option>General</option>
+                    <option>Cardiology</option>
+                    <option>Neurology</option>
+                    <option>Orthopedics</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="input-group">
+                <label for="photo">Patient Photo</label>
+                <input type="file" id="photo" accept="image/*">
+            </fieldset>
+
+            <figure>
+                <img id="preview" alt="Patient Preview">
+                <figcaption>Preview of uploaded photo</figcaption>
+            </figure>
+
+            <button type="submit" class="primary-btn">Save Patient</button>
+        </form>
+    </section>
+
+    <!-- Patient Records Table -->
+    <section class="card wide">
+        <header>
+            <h2>Patient Records</h2>
+            <time id="count" datetime=""></time>
+        </header>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <aside>
+            <details>
+                <summary>Tips</summary>
+                <p>You can edit or delete patient records using the action buttons. Make sure patient age is valid (1-120).</p>
+            </details>
+        </aside>
+    </section>
+
+</main>
+
+<footer class="topbar">
+    <p>&copy; <time datetime="2026-01-01">2026</time> CityCare Hospital Admin Panel</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
